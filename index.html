@@ -2,9 +2,585 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Młody Biznesmen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Młody Biznesmen | Cele, finanse i wzrost</title>
+    <meta name="description" content="Nowoczesna strona o ambitnym rozwoju, planowaniu finansów i realizowaniu celów metodą SMART.">
+    <style>
+        :root {
+            --bg: #07111f;
+            --panel: rgba(10, 20, 35, 0.78);
+            --panel-strong: #0e1d31;
+            --text: #f4f8fc;
+            --muted: #adc0d3;
+            --accent: #ff4d4f;
+            --accent-2: #ffd166;
+            --line: rgba(255, 255, 255, 0.1);
+            --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+            --radius: 24px;
+            --max: 1180px;
+        }
+
+        * { box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top, rgba(76, 142, 255, 0.35), transparent 28%),
+                linear-gradient(180deg, #0a1424 0%, #09111c 45%, #060b12 100%);
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(calc(100% - 2rem), var(--max));
+            margin: 0 auto;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(18px);
+            background: rgba(4, 11, 20, 0.72);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            gap: 1rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.03em;
+        }
+
+        .brand img {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+        }
+
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .hero {
+            padding: 4.5rem 0 3rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 0.9rem;
+            border-radius: 999px;
+            background: rgba(255, 209, 102, 0.12);
+            color: var(--accent-2);
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        h1, h2, h3, p {
+            margin-top: 0;
+        }
+
+        h1 {
+            margin: 1rem 0 1.25rem;
+            font-size: clamp(2.7rem, 5vw, 5.3rem);
+            line-height: 0.98;
+            letter-spacing: -0.04em;
+        }
+
+        .hero p {
+            font-size: 1.08rem;
+            color: var(--muted);
+            max-width: 62ch;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 0.95rem 1.3rem;
+            border-radius: 999px;
+            font-weight: 700;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .button:hover { transform: translateY(-2px); }
+        .button.primary {
+            background: linear-gradient(135deg, var(--accent), #ff7a59);
+            box-shadow: 0 16px 30px rgba(255, 77, 79, 0.28);
+        }
+        .button.secondary {
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat, .card, .feature, .gallery-card, .quote {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(14px);
+            border-radius: var(--radius);
+        }
+
+        .stat {
+            padding: 1.2rem;
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 1.8rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-visual {
+            position: relative;
+            min-height: 560px;
+        }
+
+        .floating-card {
+            position: absolute;
+            overflow: hidden;
+        }
+
+        .floating-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .main-shot {
+            inset: 0 0 6rem 3rem;
+        }
+
+        .main-shot::after {
+            content: "Równowaga między odwagą a strategią";
+            position: absolute;
+            inset: auto 1.2rem 1.2rem 1.2rem;
+            padding: 0.85rem 1rem;
+            border-radius: 18px;
+            background: rgba(6, 13, 25, 0.78);
+            border: 1px solid rgba(255,255,255,0.08);
+            font-weight: 700;
+        }
+
+        .smart-shot {
+            width: 46%;
+            right: 0;
+            top: 2rem;
+            transform: rotate(3deg);
+        }
+
+        .success-shot {
+            width: 40%;
+            left: 0;
+            bottom: 0;
+            transform: rotate(-4deg);
+        }
+
+        section {
+            padding: 2.5rem 0;
+        }
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title p {
+            color: var(--muted);
+            max-width: 56ch;
+            margin-bottom: 0;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+
+        .card {
+            overflow: hidden;
+        }
+
+        .card img {
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.35rem;
+        }
+
+        .card-content p,
+        .feature p,
+        .quote p,
+        .budget-copy p,
+        footer p {
+            color: var(--muted);
+        }
+
+        .framework {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .feature-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .feature {
+            padding: 1.2rem 1.3rem;
+        }
+
+        .feature h3 {
+            margin-bottom: 0.4rem;
+        }
+
+        .budget {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .budget-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .gallery-card {
+            padding: 1rem;
+        }
+
+        .gallery-card img {
+            width: 100%;
+            border-radius: 18px;
+            background: white;
+        }
+
+        .budget-copy ul {
+            padding-left: 1.15rem;
+            color: var(--muted);
+        }
+
+        .quote {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .quote strong {
+            color: var(--accent-2);
+            font-size: 0.92rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        footer {
+            padding: 1rem 0 3rem;
+        }
+
+        .footer-box {
+            padding: 1.2rem 1.4rem;
+            border-radius: 20px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.03);
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 980px) {
+            .hero-grid,
+            .framework,
+            .budget,
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                min-height: 480px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .topbar-inner,
+            .section-title,
+            .footer-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .stats,
+            .budget-visual {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 3rem;
+            }
+
+            .hero-visual {
+                min-height: 420px;
+            }
+
+            .main-shot {
+                inset: 0;
+            }
+
+            .smart-shot,
+            .success-shot {
+                width: 42%;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <a class="brand" href="#start">
+                <img src="server-icon.png" alt="Ikona Młody Biznesmen">
+                <span>Młody Biznesmen</span>
+            </a>
+            <nav class="nav" aria-label="Główna nawigacja">
+                <a href="#filary">Filary wzrostu</a>
+                <a href="#smart">Metoda SMART</a>
+                <a href="#finanse">Finanse</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="start">
+        <section class="hero">
+            <div class="container hero-grid">
+                <div>
+                    <span class="eyebrow">Ambicja • Plan • Wynik</span>
+                    <h1>Strona dla młodych ludzi, którzy chcą robić biznes z głową.</h1>
+                    <p>
+                        Obrazy w repo opowiadają spójną historię: od odwagi i ruchu, przez jasne cele,
+                        aż po świadome zarządzanie pieniędzmi. Ta strona zamienia ten zestaw grafik
+                        w nowoczesny landing page o rozwoju, przedsiębiorczości i finansowej dyscyplinie.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="button primary" href="#filary">Zobacz fundamenty</a>
+                        <a class="button secondary" href="#finanse">Przejdź do finansów</a>
+                    </div>
+                    <div class="stats">
+                        <div class="stat">
+                            <strong>5</strong>
+                            filarów skutecznego celu
+                        </div>
+                        <div class="stat">
+                            <strong>35%</strong>
+                            nacisku na koszty stałe w przykładowym budżecie
+                        </div>
+                        <div class="stat">
+                            <strong>1 plan</strong>
+                            który zamienia motywację w działanie
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="floating-card card main-shot">
+                        <img src="image1.jpg" alt="Biznesmen utrzymujący równowagę na monocyklu">
+                    </div>
+                    <div class="floating-card card smart-shot">
+                        <img src="image3.png" alt="Grafika przedstawiająca metodę SMART">
+                    </div>
+                    <div class="floating-card card success-shot">
+                        <img src="image2.jpg" alt="Człowiek świętujący sukces wśród unoszących się dokumentów">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="filary">
+            <div class="container">
+                <div class="section-title">
+                    <div>
+                        <span class="eyebrow">Kierunek działania</span>
+                        <h2>Trzy filary, które widać już na poziomie samych obrazów.</h2>
+                    </div>
+                    <p>
+                        Każda grafika z repo wnosi odrębny komunikat: równowaga, zwycięstwo i planowanie.
+                        Razem budują markę osobistą młodego przedsiębiorcy.
+                    </p>
+                </div>
+                <div class="cards">
+                    <article class="card">
+                        <img src="image1.jpg" alt="Biznesmen jadący na monocyklu z teczką">
+                        <div class="card-content">
+                            <h3>Odwaga i balans</h3>
+                            <p>
+                                Biznes wymaga odwagi, ale jeszcze bardziej wymaga kontroli ryzyka. Ten motyw
+                                sugeruje sprawne łączenie dynamiki z odpowiedzialnością.
+                            </p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img src="image2.jpg" alt="Uśmiechnięty mężczyzna z rozwianymi kartkami nad głową">
+                        <div class="card-content">
+                            <h3>Energia i rezultat</h3>
+                            <p>
+                                Sukces na stronie nie jest pokazany jako luksus, tylko jako efekt dobrze wykonanej pracy,
+                                zamkniętych projektów i uporządkowanych procesów.
+                            </p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img src="image3.png" alt="Kolorowa plansza SMART">
+                        <div class="card-content">
+                            <h3>System zamiast chaosu</h3>
+                            <p>
+                                Metoda SMART nadaje rytm całej narracji. Dzięki niej ambicja nie kończy się na haśle,
+                                lecz przechodzi w mierzalny plan.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="smart">
+            <div class="container framework">
+                <div>
+                    <span class="eyebrow">Metoda SMART</span>
+                    <h2>Cel staje się realny dopiero wtedy, gdy potrafisz go rozpisać.</h2>
+                    <p>
+                        Grafika SMART jest mocnym punktem repo, dlatego strona wykorzystuje ją jako ramę do komunikacji.
+                        To naturalny most między motywacyjnym przekazem a praktycznym działaniem.
+                    </p>
+                    <img class="card" src="image3.png" alt="Elementy metody SMART" style="padding: 0.7rem; background: rgba(255,255,255,0.97);">
+                </div>
+                <div class="feature-list">
+                    <div class="feature">
+                        <h3>S — Specific</h3>
+                        <p>Zamiast mówić „chcę zarabiać więcej”, określ konkretny model działania, kanał sprzedaży i klienta.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>M — Measurable</h3>
+                        <p>Ustal wskaźniki: liczba leadów, marża, przychód miesięczny albo tempo spłaty zobowiązań.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>A/R/T — Attainable, Relevant, Time Bound</h3>
+                        <p>Cel ma być osiągalny, sensowny i wpisany w konkretny termin. Wtedy motywacja zamienia się w harmonogram.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="finanse">
+            <div class="container budget">
+                <div class="budget-copy">
+                    <span class="eyebrow">Budżet i świadomość</span>
+                    <h2>Finanse to nie tylko zarabianie, ale też rozumienie przepływu pieniędzy.</h2>
+                    <p>
+                        Dwie pozostałe grafiki w repo przenoszą stronę z poziomu motywacji do konkretu.
+                        Pokazują strukturę domowego budżetu i źródła wpływów publicznych, więc sekcja finansowa
+                        została zaprojektowana jako praktyczne uzupełnienie całej opowieści.
+                    </p>
+                    <ul>
+                        <li>Budżet zaczyna się od kosztów stałych, a dopiero później przechodzi do stylu życia.</li>
+                        <li>Oszczędności nie są dodatkiem — powinny mieć własne miejsce w planie wydatków.</li>
+                        <li>Zrozumienie podatków i opłat pomaga podejmować dojrzalsze decyzje biznesowe.</li>
+                    </ul>
+                </div>
+                <div class="budget-visual">
+                    <div class="gallery-card">
+                        <img src="image4.png" alt="Wykres struktury budżetu z mieszkaniem, życiem i oszczędnościami">
+                    </div>
+                    <div class="gallery-card">
+                        <img src="image5.png" alt="Wykres źródeł dochodów rządowych">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="quote">
+                    <strong>Wniosek z repo</strong>
+                    <h2>Najlepsza strona nie tylko dobrze wygląda — ona prowadzi użytkownika od inspiracji do decyzji.</h2>
+                    <p>
+                        Dlatego ten projekt łączy dynamiczny hero section, edukacyjne bloki treści i wizualne odniesienia
+                        do finansów. Dzięki temu zawartość jest spójna z obrazami, które już znajdowały się w repozytorium.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-box">
+                <div>
+                    <strong>Młody Biznesmen</strong>
+                    <p>Jedna strona, zbudowana bezpośrednio na podstawie obrazów dostępnych w repo.</p>
+                </div>
+                <a class="button secondary" href="#start">Wróć na górę</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
-
