@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Młody Biznesmen | Cele, finanse i wzrost</title>
     <meta name="description" content="Nowoczesna strona o ambitnym rozwoju, planowaniu finansów i realizowaniu celów metodą SMART.">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
     <style>
         :root {
             --bg: #07111f;
@@ -329,6 +334,40 @@
             text-align: center;
         }
 
+        .audio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .audio-card {
+            padding: 1rem 1.1rem;
+        }
+
+        .audio-card h3 {
+            margin-bottom: 0.7rem;
+            font-size: 1.05rem;
+        }
+
+        .audio-card audio {
+            width: 100%;
+        }
+
+        .audio-meta {
+            margin-top: 0.65rem;
+            font-size: 0.88rem;
+            color: var(--muted);
+            display: flex;
+            justify-content: space-between;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .audio-meta a {
+            color: var(--accent-2);
+            font-weight: 700;
+        }
+
         .quote strong {
             color: var(--accent-2);
             font-size: 0.92rem;
@@ -355,7 +394,8 @@
             .hero-grid,
             .framework,
             .budget,
-            .cards {
+            .cards,
+            .audio-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -400,13 +440,14 @@
     <header class="topbar">
         <div class="container topbar-inner">
             <a class="brand" href="#start">
-                <img src="server-icon.png" alt="Ikona Młody Biznesmen">
+                <img src="apple-touch-icon.png" alt="Ikona Młody Biznesmen">
                 <span>Młody Biznesmen</span>
             </a>
             <nav class="nav" aria-label="Główna nawigacja">
                 <a href="#filary">Filary wzrostu</a>
                 <a href="#smart">Metoda SMART</a>
                 <a href="#finanse">Finanse</a>
+                <a href="#audio">Audio MP3</a>
             </nav>
         </div>
     </header>
@@ -553,6 +594,78 @@
                     <div class="gallery-card">
                         <img src="image5.png" alt="Wykres źródeł dochodów rządowych">
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="audio">
+            <div class="container">
+                <div class="section-title">
+                    <div>
+                        <span class="eyebrow">Strefa audio</span>
+                        <h2>Odsłuchaj mini-serię MP3 o przedsiębiorczości i finansach.</h2>
+                    </div>
+                    <p>
+                        Dodałem odtwarzacze bezpośrednio na stronie, żeby użytkownik mógł słuchać materiałów
+                        bez przechodzenia do osobnych plików.
+                    </p>
+                </div>
+                <div class="audio-grid">
+                    <article class="audio-card card">
+                        <h3>Kim jest przedsiębiorca</h3>
+                        <audio controls preload="metadata" aria-label="Odtwarzacz: Kim jest przedsiębiorca">
+                            <source src="Kim jest przedsiębiorca.mp3" type="audio/mpeg">
+                            Twoja przeglądarka nie wspiera odtwarzacza audio.
+                        </audio>
+                        <div class="audio-meta">
+                            <span>Format: MP3</span>
+                            <a href="Kim jest przedsiębiorca.mp3" download>Pobierz plik</a>
+                        </div>
+                    </article>
+                    <article class="audio-card card">
+                        <h3>Jak oszczędzać</h3>
+                        <audio controls preload="metadata" aria-label="Odtwarzacz: Jak oszczędzać">
+                            <source src="Jak oszczędzać.mp3" type="audio/mpeg">
+                            Twoja przeglądarka nie wspiera odtwarzacza audio.
+                        </audio>
+                        <div class="audio-meta">
+                            <span>Format: MP3</span>
+                            <a href="Jak oszczędzać.mp3" download>Pobierz plik</a>
+                        </div>
+                    </article>
+                    <article class="audio-card card">
+                        <h3>Jak działają podatki</h3>
+                        <audio controls preload="metadata" aria-label="Odtwarzacz: Jak działają podatki">
+                            <source src="Jak działają podatki.mp3" type="audio/mpeg">
+                            Twoja przeglądarka nie wspiera odtwarzacza audio.
+                        </audio>
+                        <div class="audio-meta">
+                            <span>Format: MP3</span>
+                            <a href="Jak działają podatki.mp3" download>Pobierz plik</a>
+                        </div>
+                    </article>
+                    <article class="audio-card card">
+                        <h3>Jak zarządzać projektami</h3>
+                        <audio controls preload="metadata" aria-label="Odtwarzacz: Jak zarządzać projektami">
+                            <source src="Jak zarządzać projektami.mp3" type="audio/mpeg">
+                            Twoja przeglądarka nie wspiera odtwarzacza audio.
+                        </audio>
+                        <div class="audio-meta">
+                            <span>Format: MP3</span>
+                            <a href="Jak zarządzać projektami.mp3" download>Pobierz plik</a>
+                        </div>
+                    </article>
+                    <article class="audio-card card">
+                        <h3>Czym jest pieniądz</h3>
+                        <audio controls preload="metadata" aria-label="Odtwarzacz: Czym jest pieniądz">
+                            <source src="Czym jest pieniądz.mp3" type="audio/mpeg">
+                            Twoja przeglądarka nie wspiera odtwarzacza audio.
+                        </audio>
+                        <div class="audio-meta">
+                            <span>Format: MP3</span>
+                            <a href="Czym jest pieniądz.mp3" download>Pobierz plik</a>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
