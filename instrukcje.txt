@@ -1,0 +1,9 @@
+mlody-biznesmen.pl to platforma edukacyjna podzielona na sekcje, podział na sekcje rozpoznasz po nazwach plików mp3
+W każdej sekcji umieść plik mp3, odpowiadającą grafikę, tekst który przygotujesz samodzielnie oraz iframe wordwall ( jeżeli jest odpowiedni iframe do danej sekcji )
+Potrzebna jest gruntowna przebudowa strony, ma zawierać wyraźny podział na sekcje merytoryczne
+
+LISTA IFRAMEów DOW WORDWALL
+
+<iframe style="max-width:100%" src="https://wordwall.net/embed/f5c8ce7916ab4a4491a00a2ef2341aec?themeId=1&templateId=2&fontStackId=0" width="500" height="380" frameborder="0" allowfullscreen></iframe> - budżet osobisty
+<iframe style="max-width:100%" src="https://wordwall.net/embed/85eb8b5b9b634cc8bced3860fdd488ac?themeId=1&templateId=8&fontStackId=0" width="500" height="380" frameborder="0" allowfullscreen></iframe> - czym jest pieniądz
+<iframe style="max-width:100%" src="https://wordwall.net/embed/594bcae3a1d846b888f6e2d95595e6e0?themeId=1&templateId=5&fontStackId=0" width="500" height="380" frameborder="0" allowfullscreen></iframe> - jak działają podatki
