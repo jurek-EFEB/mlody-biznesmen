@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Młody Biznesmen | Cele, finanse i wzrost</title>
-    <meta name="description" content="Nowoczesna strona o ambitnym rozwoju, planowaniu finansów i realizowaniu celów metodą SMART.">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="icon" href="/favicon.ico">
-    <link rel="manifest" href="/site.webmanifest">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Młody Biznesmen | Platforma edukacyjna o przedsiębiorczości i finansach</title>
+    <meta name="description" content="Platforma edukacyjna o przedsiębiorczości, oszczędzaniu, podatkach, zarządzaniu projektami i roli pieniądza. Każda sekcja zawiera treść, grafikę, audio i interaktywne ćwiczenia." />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
     <style>
         :root {
-            --bg: #07111f;
-            --panel: rgba(10, 20, 35, 0.78);
-            --panel-strong: #0e1d31;
-            --text: #f4f8fc;
-            --muted: #adc0d3;
-            --accent: #ff4d4f;
+            --bg: #08111d;
+            --bg-soft: #0d1828;
+            --panel: rgba(12, 22, 38, 0.82);
+            --panel-strong: #10233a;
+            --card: rgba(255, 255, 255, 0.04);
+            --text: #f3f7fb;
+            --muted: #b7c7d9;
+            --accent: #ff5a5f;
             --accent-2: #ffd166;
+            --accent-3: #72ddf7;
             --line: rgba(255, 255, 255, 0.1);
-            --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-            --radius: 24px;
-            --max: 1180px;
+            --shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+            --radius-xl: 28px;
+            --radius-lg: 22px;
+            --radius-md: 16px;
+            --max: 1220px;
         }
 
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
         html {
             scroll-behavior: smooth;
@@ -36,14 +43,15 @@
             font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             color: var(--text);
             background:
-                radial-gradient(circle at top, rgba(76, 142, 255, 0.35), transparent 28%),
-                linear-gradient(180deg, #0a1424 0%, #09111c 45%, #060b12 100%);
-            line-height: 1.6;
+                radial-gradient(circle at top left, rgba(114, 221, 247, 0.12), transparent 26%),
+                radial-gradient(circle at top right, rgba(255, 90, 95, 0.12), transparent 24%),
+                linear-gradient(180deg, #09111d 0%, #09121f 35%, #060b12 100%);
+            line-height: 1.65;
         }
 
         img {
-            max-width: 100%;
             display: block;
+            max-width: 100%;
         }
 
         a {
@@ -59,9 +67,9 @@
         .topbar {
             position: sticky;
             top: 0;
-            z-index: 20;
+            z-index: 50;
+            background: rgba(5, 12, 22, 0.8);
             backdrop-filter: blur(18px);
-            background: rgba(4, 11, 20, 0.72);
             border-bottom: 1px solid var(--line);
         }
 
@@ -69,8 +77,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 1rem 0;
             gap: 1rem;
+            padding: 0.95rem 0;
         }
 
         .brand {
@@ -82,8 +90,8 @@
         }
 
         .brand img {
-            width: 48px;
-            height: 48px;
+            width: 46px;
+            height: 46px;
             border-radius: 14px;
             box-shadow: var(--shadow);
         }
@@ -91,18 +99,30 @@
         .nav {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            justify-content: flex-end;
+            gap: 0.9rem;
             color: var(--muted);
             font-size: 0.95rem;
         }
 
+        .nav a {
+            padding: 0.45rem 0.85rem;
+            border-radius: 999px;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .nav a:hover {
+            background: rgba(255,255,255,0.06);
+            color: var(--text);
+        }
+
         .hero {
-            padding: 4.5rem 0 3rem;
+            padding: 4.2rem 0 3rem;
         }
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-columns: 1.1fr 0.9fr;
             gap: 2rem;
             align-items: center;
         }
@@ -110,254 +130,283 @@
         .eyebrow {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.45rem;
             padding: 0.45rem 0.9rem;
             border-radius: 999px;
             background: rgba(255, 209, 102, 0.12);
             color: var(--accent-2);
-            font-size: 0.9rem;
-            font-weight: 700;
-            letter-spacing: 0.04em;
             text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-size: 0.82rem;
+            font-weight: 800;
         }
 
-        h1, h2, h3, p {
+        h1, h2, h3, h4, p {
             margin-top: 0;
         }
 
         h1 {
-            margin: 1rem 0 1.25rem;
-            font-size: clamp(2.7rem, 5vw, 5.3rem);
-            line-height: 0.98;
-            letter-spacing: -0.04em;
+            margin: 1rem 0 1.2rem;
+            font-size: clamp(2.6rem, 5vw, 5.2rem);
+            line-height: 0.96;
+            letter-spacing: -0.05em;
         }
 
-        .hero p {
-            font-size: 1.08rem;
+        h2 {
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.9rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .lead,
+        .section-intro p,
+        .module-copy p,
+        footer p {
             color: var(--muted);
-            max-width: 62ch;
         }
 
         .hero-actions {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
-            margin: 2rem 0;
+            margin: 2rem 0 2.2rem;
         }
 
         .button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.6rem;
+            gap: 0.55rem;
             padding: 0.95rem 1.3rem;
             border-radius: 999px;
             font-weight: 700;
-            transition: transform 0.2s ease, background 0.2s ease;
+            border: 1px solid transparent;
+            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
         }
 
-        .button:hover { transform: translateY(-2px); }
-        .button.primary {
-            background: linear-gradient(135deg, var(--accent), #ff7a59);
-            box-shadow: 0 16px 30px rgba(255, 77, 79, 0.28);
+        .button:hover {
+            transform: translateY(-2px);
         }
+
+        .button.primary {
+            background: linear-gradient(135deg, var(--accent), #ff7c57);
+            box-shadow: 0 16px 30px rgba(255, 90, 95, 0.3);
+        }
+
         .button.secondary {
-            border: 1px solid var(--line);
+            border-color: var(--line);
             background: rgba(255, 255, 255, 0.04);
         }
 
-        .stats {
+        .hero-points {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 1rem;
-            margin-top: 2rem;
         }
 
-        .stat, .card, .feature, .gallery-card, .quote {
+        .point,
+        .module-card,
+        .intro-card,
+        .summary-box,
+        .toc,
+        .image-box,
+        .audio-box,
+        .iframe-box {
             background: var(--panel);
             border: 1px solid var(--line);
             box-shadow: var(--shadow);
             backdrop-filter: blur(14px);
-            border-radius: var(--radius);
+            border-radius: var(--radius-xl);
         }
 
-        .stat {
-            padding: 1.2rem;
+        .point {
+            padding: 1.15rem;
         }
 
-        .stat strong {
+        .point strong {
             display: block;
-            font-size: 1.8rem;
-            margin-bottom: 0.25rem;
+            font-size: 1.35rem;
+            margin-bottom: 0.2rem;
         }
 
         .hero-visual {
-            position: relative;
-            min-height: 560px;
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: 1.1fr 0.9fr;
         }
 
-        .floating-card {
-            position: absolute;
+        .hero-visual .image-box:first-child {
+            grid-row: span 2;
+            min-height: 520px;
+        }
+
+        .image-box {
             overflow: hidden;
+            position: relative;
         }
 
-        .floating-card img {
+        .image-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .main-shot {
-            inset: 0 0 6rem 3rem;
-        }
-
-        .main-shot::after {
-            content: "Równowaga między odwagą a strategią";
+        .image-caption {
             position: absolute;
-            inset: auto 1.2rem 1.2rem 1.2rem;
-            padding: 0.85rem 1rem;
-            border-radius: 18px;
-            background: rgba(6, 13, 25, 0.78);
+            left: 1rem;
+            right: 1rem;
+            bottom: 1rem;
+            padding: 0.8rem 1rem;
+            border-radius: 16px;
+            background: rgba(7, 14, 25, 0.75);
             border: 1px solid rgba(255,255,255,0.08);
+            font-size: 0.95rem;
             font-weight: 700;
         }
 
-        .smart-shot {
-            width: 46%;
-            right: 0;
-            top: 2rem;
-            transform: rotate(3deg);
-        }
-
-        .success-shot {
-            width: 40%;
-            left: 0;
-            bottom: 0;
-            transform: rotate(-4deg);
-        }
-
         section {
-            padding: 2.5rem 0;
+            padding: 2.8rem 0;
         }
 
-        .section-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: end;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-title p {
-            color: var(--muted);
-            max-width: 56ch;
-            margin-bottom: 0;
-        }
-
-        .cards {
+        .section-intro {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 1.25rem;
+            grid-template-columns: 1fr 0.9fr;
+            gap: 1.5rem;
+            align-items: end;
+            margin-bottom: 1.8rem;
         }
 
-        .card {
+        .intro-card {
+            padding: 1.5rem;
+        }
+
+        .toc {
+            padding: 1.6rem;
+        }
+
+        .toc-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        .toc a {
+            display: block;
+            padding: 0.95rem 1rem;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            color: var(--muted);
+            transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+        }
+
+        .toc a:hover {
+            transform: translateY(-2px);
+            background: rgba(255,255,255,0.06);
+            color: var(--text);
+        }
+
+        .module {
+            scroll-margin-top: 90px;
+        }
+
+        .module-card {
             overflow: hidden;
-        }
-
-        .card img {
-            aspect-ratio: 16 / 10;
-            object-fit: cover;
-        }
-
-        .card-content {
             padding: 1.35rem;
         }
 
-        .card-content p,
-        .feature p,
-        .quote p,
-        .budget-copy p,
-        footer p {
-            color: var(--muted);
+        .module-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
 
-        .framework {
+        .module-index {
+            font-weight: 800;
+            color: var(--accent-2);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .module-grid {
             display: grid;
             grid-template-columns: 0.9fr 1.1fr;
-            gap: 1.5rem;
-            align-items: center;
+            gap: 1.4rem;
+            align-items: start;
         }
 
-        .feature-list {
+        .module-media {
             display: grid;
             gap: 1rem;
         }
 
-        .feature {
-            padding: 1.2rem 1.3rem;
+        .module-media .image-box {
+            min-height: 320px;
         }
 
-        .feature h3 {
-            margin-bottom: 0.4rem;
+        .audio-box,
+        .iframe-box {
+            padding: 1rem 1rem 1.1rem;
         }
 
-        .budget {
-            display: grid;
-            grid-template-columns: 0.95fr 1.05fr;
-            gap: 1.5rem;
-            align-items: center;
+        .audio-box h4,
+        .iframe-box h4 {
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
         }
 
-        .budget-visual {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .gallery-card {
-            padding: 1rem;
-        }
-
-        .gallery-card img {
+        audio {
             width: 100%;
-            border-radius: 18px;
-            background: white;
         }
 
-        .budget-copy ul {
+        .module-copy {
+            padding: 0.4rem 0;
+        }
+
+        .module-copy .grid-notes {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.9rem;
+            margin-top: 1.1rem;
+        }
+
+        .note {
+            padding: 1rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 18px;
+        }
+
+        .note strong {
+            display: block;
+            margin-bottom: 0.35rem;
+        }
+
+        .module-copy ul {
             padding-left: 1.15rem;
             color: var(--muted);
+            margin: 1rem 0 0;
         }
 
-        .quote {
+        .summary-box {
             padding: 2rem;
             text-align: center;
         }
 
-        .audio-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1rem;
-        }
-
-        .audio-card {
-            padding: 1rem 1.1rem;
-        }
-
-        .audio-card h3 {
-            margin-bottom: 0.7rem;
-            font-size: 1.05rem;
-        }
-
-        .audio-card audio {
-            width: 100%;
-        }
-
-        .quote strong {
-            color: var(--accent-2);
-            font-size: 0.92rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
+        .summary-box p {
+            color: var(--muted);
+            max-width: 760px;
+            margin: 0.8rem auto 0;
         }
 
         footer {
@@ -365,58 +414,46 @@
         }
 
         .footer-box {
-            padding: 1.2rem 1.4rem;
-            border-radius: 20px;
-            border: 1px solid var(--line);
-            background: rgba(255, 255, 255, 0.03);
             display: flex;
+            align-items: center;
             justify-content: space-between;
             gap: 1rem;
             flex-wrap: wrap;
+            padding: 1.25rem 1.4rem;
+            border-radius: 24px;
+            border: 1px solid var(--line);
+            background: rgba(255,255,255,0.03);
         }
 
-        @media (max-width: 980px) {
+        @media (max-width: 1080px) {
             .hero-grid,
-            .framework,
-            .budget,
-            .cards,
-            .audio-grid {
+            .section-intro,
+            .module-grid {
                 grid-template-columns: 1fr;
             }
 
-            .hero-visual {
-                min-height: 480px;
+            .hero-visual .image-box:first-child {
+                min-height: 360px;
             }
         }
 
-        @media (max-width: 720px) {
+        @media (max-width: 780px) {
             .topbar-inner,
-            .section-title,
-            .footer-box {
+            .footer-box,
+            .module-top {
                 flex-direction: column;
                 align-items: flex-start;
             }
 
-            .stats,
-            .budget-visual {
+            .hero-points,
+            .toc-list,
+            .module-copy .grid-notes,
+            .hero-visual {
                 grid-template-columns: 1fr;
             }
 
             .hero {
                 padding-top: 3rem;
-            }
-
-            .hero-visual {
-                min-height: 420px;
-            }
-
-            .main-shot {
-                inset: 0;
-            }
-
-            .smart-shot,
-            .success-shot {
-                width: 42%;
             }
         }
     </style>
@@ -425,14 +462,16 @@
     <header class="topbar">
         <div class="container topbar-inner">
             <a class="brand" href="#start">
-                <img src="apple-touch-icon.png" alt="Ikona Młody Biznesmen">
+                <img src="apple-touch-icon.png" alt="Ikona platformy Młody Biznesmen" />
                 <span>Młody Biznesmen</span>
             </a>
             <nav class="nav" aria-label="Główna nawigacja">
-                <a href="#filary">Filary wzrostu</a>
-                <a href="#smart">Metoda SMART</a>
-                <a href="#finanse">Finanse</a>
-                <a href="#audio">Audio MP3</a>
+                <a href="#o-platformie">O platformie</a>
+                <a href="#przedsiebiorca">Przedsiębiorca</a>
+                <a href="#oszczedzanie">Oszczędzanie</a>
+                <a href="#podatki">Podatki</a>
+                <a href="#projekty">Projekty</a>
+                <a href="#pieniadz">Pieniądz</a>
             </nav>
         </div>
     </header>
@@ -441,224 +480,341 @@
         <section class="hero">
             <div class="container hero-grid">
                 <div>
-                    <span class="eyebrow">Ambicja • Plan • Wynik</span>
-                    <h1>Strona dla młodych ludzi, którzy chcą robić biznes z głową.</h1>
-                    <p>
-                        Obrazy w repo opowiadają spójną historię: od odwagi i ruchu, przez jasne cele,
-                        aż po świadome zarządzanie pieniędzmi. Ta strona zamienia ten zestaw grafik
-                        w nowoczesny landing page o rozwoju, przedsiębiorczości i finansowej dyscyplinie.
+                    <span class="eyebrow">Platforma edukacyjna</span>
+                    <h1>Przedsiębiorczość, finanse i zarządzanie w wyraźnie podzielonych sekcjach.</h1>
+                    <p class="lead">
+                        Strona zawiera materiały edukacyjne o przedsiębiorczości, finansach i ekonomii. Znajdziesz tu krótkie wyjaśnienia pojęć, nagrania audio oraz ćwiczenia, które pomagają lepiej zrozumieć budżet, podatki, pieniądz i planowanie działań.
                     </p>
-                    <div class="hero-actions">
-                        <a class="button primary" href="#filary">Zobacz fundamenty</a>
-                        <a class="button secondary" href="#finanse">Przejdź do finansów</a>
-                    </div>
-                    <div class="stats">
-                        <div class="stat">
-                            <strong>5</strong>
-                            filarów skutecznego celu
-                        </div>
-                        <div class="stat">
-                            <strong>35%</strong>
-                            nacisku na koszty stałe w przykładowym budżecie
-                        </div>
-                        <div class="stat">
-                            <strong>1 plan</strong>
-                            który zamienia motywację w działanie
-                        </div>
-                    </div>
+                    
                 </div>
+
                 <div class="hero-visual" aria-hidden="true">
-                    <div class="floating-card card main-shot">
-                        <img src="image1.jpg" alt="Biznesmen utrzymujący równowagę na monocyklu">
+                    <div class="image-box">
+                        <img src="image1.jpg" alt="Młody biznesmen utrzymujący równowagę i rozwijający się zawodowo" />
+                        <div class="image-caption">Nauka działania z odwagą, planem i kontrolą ryzyka.</div>
                     </div>
-                    <div class="floating-card card smart-shot">
-                        <img src="image3.png" alt="Grafika przedstawiająca metodę SMART">
+                    <div class="image-box">
+                        <img src="image3.png" alt="Grafika przedstawiająca metodę SMART" />
+                        <div class="image-caption">Cele zamienione w plan możliwy do wykonania.</div>
                     </div>
-                    <div class="floating-card card success-shot">
-                        <img src="image2.jpg" alt="Człowiek świętujący sukces wśród unoszących się dokumentów">
+                    <div class="image-box">
+                        <img src="image4.png" alt="Wykres budżetu osobistego" />
+                        <div class="image-caption">Świadome finanse to fundament spokojnego wzrostu.</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="filary">
+        <section id="o-platformie">
             <div class="container">
-                <div class="section-title">
-                    <div>
-                        <span class="eyebrow">Kierunek działania</span>
-                        <h2>Trzy filary, które widać już na poziomie samych obrazów.</h2>
-                    </div>
-                    <p>
-                        Każda grafika z repo wnosi odrębny komunikat: równowaga, zwycięstwo i planowanie.
-                        Razem budują markę osobistą młodego przedsiębiorcy.
-                    </p>
-                </div>
-                <div class="cards">
-                    <article class="card">
-                        <img src="image1.jpg" alt="Biznesmen jadący na monocyklu z teczką">
-                        <div class="card-content">
-                            <h3>Odwaga i balans</h3>
-                            <p>
-                                Biznes wymaga odwagi, ale jeszcze bardziej wymaga kontroli ryzyka. Ten motyw
-                                sugeruje sprawne łączenie dynamiki z odpowiedzialnością.
-                            </p>
-                        </div>
-                    </article>
-                    <article class="card">
-                        <img src="image2.jpg" alt="Uśmiechnięty mężczyzna z rozwianymi kartkami nad głową">
-                        <div class="card-content">
-                            <h3>Energia i rezultat</h3>
-                            <p>
-                                Sukces na stronie nie jest pokazany jako luksus, tylko jako efekt dobrze wykonanej pracy,
-                                zamkniętych projektów i uporządkowanych procesów.
-                            </p>
-                        </div>
-                    </article>
-                    <article class="card">
-                        <img src="image3.png" alt="Kolorowa plansza SMART">
-                        <div class="card-content">
-                            <h3>System zamiast chaosu</h3>
-                            <p>
-                                Metoda SMART nadaje rytm całej narracji. Dzięki niej ambicja nie kończy się na haśle,
-                                lecz przechodzi w mierzalny plan.
-                            </p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="smart">
-            <div class="container framework">
-                <div>
-                    <span class="eyebrow">Metoda SMART</span>
-                    <h2>Cel staje się realny dopiero wtedy, gdy potrafisz go rozpisać.</h2>
-                    <p>
-                        Grafika SMART jest mocnym punktem repo, dlatego strona wykorzystuje ją jako ramę do komunikacji.
-                        To naturalny most między motywacyjnym przekazem a praktycznym działaniem.
-                    </p>
-                    <img class="card" src="image3.png" alt="Elementy metody SMART" style="padding: 0.7rem; background: rgba(255,255,255,0.97);">
-                </div>
-                <div class="feature-list">
-                    <div class="feature">
-                        <h3>S — Specific</h3>
-                        <p>Zamiast mówić „chcę zarabiać więcej”, określ konkretny model działania, kanał sprzedaży i klienta.</p>
-                    </div>
-                    <div class="feature">
-                        <h3>M — Measurable</h3>
-                        <p>Ustal wskaźniki: liczba leadów, marża, przychód miesięczny albo tempo spłaty zobowiązań.</p>
-                    </div>
-                    <div class="feature">
-                        <h3>A/R/T — Attainable, Relevant, Time Bound</h3>
-                        <p>Cel ma być osiągalny, sensowny i wpisany w konkretny termin. Wtedy motywacja zamienia się w harmonogram.</p>
+                <div class="toc">
+                    <h3>Spis sekcji</h3>
+                    <div class="toc-list">
+                        <a href="#przedsiebiorca">Kim jest przedsiębiorca</a>
+                        <a href="#oszczedzanie">Jak oszczędzać</a>
+                        <a href="#podatki">Jak działają podatki</a>
+                        <a href="#projekty">Jak zarządzać projektami</a>
+                        <a href="#pieniadz">Czym jest pieniądz</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="finanse">
-            <div class="container budget">
-                <div class="budget-copy">
-                    <span class="eyebrow">Budżet i świadomość</span>
-                    <h2>Finanse to nie tylko zarabianie, ale też rozumienie przepływu pieniędzy.</h2>
-                    <p>
-                        Dwie pozostałe grafiki w repo przenoszą stronę z poziomu motywacji do konkretu.
-                        Pokazują strukturę domowego budżetu i źródła wpływów publicznych, więc sekcja finansowa
-                        została zaprojektowana jako praktyczne uzupełnienie całej opowieści.
-                    </p>
-                    <ul>
-                        <li>Budżet zaczyna się od kosztów stałych, a dopiero później przechodzi do stylu życia.</li>
-                        <li>Oszczędności nie są dodatkiem — powinny mieć własne miejsce w planie wydatków.</li>
-                        <li>Zrozumienie podatków i opłat pomaga podejmować dojrzalsze decyzje biznesowe.</li>
-                    </ul>
-                </div>
-                <div class="budget-visual">
-                    <div class="gallery-card">
-                        <img src="image4.png" alt="Wykres struktury budżetu z mieszkaniem, życiem i oszczędnościami">
-                    </div>
-                    <div class="gallery-card">
-                        <img src="image5.png" alt="Wykres źródeł dochodów rządowych">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="audio">
+        <section id="przedsiebiorca" class="module">
             <div class="container">
-                <div class="section-title">
-                    <div>
-                        <span class="eyebrow">Strefa audio</span>
-                        <h2>Odsłuchaj mini-serię MP3 o przedsiębiorczości i finansach.</h2>
+                <article class="module-card">
+                    <div class="module-top">
+                        <div>
+                            <div class="module-index">Sekcja 01</div>
+                            <h2>Kim jest przedsiębiorca</h2>
+                        </div>
+                        <span class="eyebrow">Postawa i odpowiedzialność</span>
                     </div>
-                    <p>
-                        Dodałem odtwarzacze bezpośrednio na stronie, żeby użytkownik mógł słuchać materiałów
-                        bez przechodzenia do osobnych plików.
-                    </p>
-                </div>
-                <div class="audio-grid">
-                    <article class="audio-card card">
-                        <h3>Kim jest przedsiębiorca</h3>
-                        <audio controls preload="none">
-                            <source src="Kim jest przedsiębiorca.mp3" type="audio/mpeg">
-                            Twoja przeglądarka nie wspiera odtwarzacza audio.
-                        </audio>
-                    </article>
-                    <article class="audio-card card">
-                        <h3>Jak oszczędzać</h3>
-                        <audio controls preload="none">
-                            <source src="Jak oszczędzać.mp3" type="audio/mpeg">
-                            Twoja przeglądarka nie wspiera odtwarzacza audio.
-                        </audio>
-                    </article>
-                    <article class="audio-card card">
-                        <h3>Jak działają podatki</h3>
-                        <audio controls preload="none">
-                            <source src="Jak działają podatki.mp3" type="audio/mpeg">
-                            Twoja przeglądarka nie wspiera odtwarzacza audio.
-                        </audio>
-                    </article>
-                    <article class="audio-card card">
-                        <h3>Jak zarządzać projektami</h3>
-                        <audio controls preload="none">
-                            <source src="Jak zarządzać projektami.mp3" type="audio/mpeg">
-                            Twoja przeglądarka nie wspiera odtwarzacza audio.
-                        </audio>
-                    </article>
-                    <article class="audio-card card">
-                        <h3>Czym jest pieniądz</h3>
-                        <audio controls preload="none">
-                            <source src="Czym jest pieniądz.mp3" type="audio/mpeg">
-                            Twoja przeglądarka nie wspiera odtwarzacza audio.
-                        </audio>
-                    </article>
-                </div>
+
+                    <div class="module-grid">
+                        <div class="module-media">
+                            <div class="image-box">
+                                <img src="image1.jpg" alt="Osoba zachowująca równowagę w dynamicznym świecie biznesu" />
+                                <div class="image-caption">Przedsiębiorca działa odważnie, ale nie bezmyślnie.</div>
+                            </div>
+                            <div class="audio-box">
+                                <h4>Materiał audio</h4>
+                                <audio controls preload="none">
+                                    <source src="Kim jest przedsiębiorca.mp3" type="audio/mpeg" />
+                                    Twoja przeglądarka nie wspiera odtwarzacza audio.
+                                </audio>
+                            </div>
+                        </div>
+
+                        <div class="module-copy">
+                            <p>
+                                Przedsiębiorca to nie tylko osoba, która zakłada firmę. To ktoś, kto potrafi dostrzec problem, zaproponować rozwiązanie i wziąć odpowiedzialność za jego wdrożenie. Taka postawa wymaga samodzielności, odwagi oraz umiejętności podejmowania decyzji mimo niepewności.
+                            </p>
+                            <p>
+                                W praktyce przedsiębiorczość zaczyna się dużo wcześniej niż rejestracja działalności. Widać ją wtedy, gdy ktoś planuje swoje działania, szuka okazji, analizuje ryzyko i uczy się na błędach. To sposób myślenia oparty na sprawczości: zamiast biernie czekać, przedsiębiorca tworzy wartość dla innych i jednocześnie rozwija własne kompetencje.
+                            </p>
+                            <div class="grid-notes">
+                                <div class="note">
+                                    <strong>Najważniejsza cecha</strong>
+                                    Umiejętność łączenia inicjatywy z odpowiedzialnością za skutki decyzji.
+                                </div>
+                                <div class="note">
+                                    <strong>Dlaczego to ważne</strong>
+                                    Bez przedsiębiorczej postawy trudno budować dochód, markę osobistą i długofalowy rozwój.
+                                </div>
+                            </div>
+                            <ul>
+                                <li>Przedsiębiorca obserwuje potrzeby ludzi i reaguje na nie działaniem.</li>
+                                <li>Nie unika ryzyka, ale stara się nim zarządzać.</li>
+                                <li>Traktuje rozwój jako proces, a nie jednorazowy sukces.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="oszczedzanie" class="module">
+            <div class="container">
+                <article class="module-card">
+                    <div class="module-top">
+                        <div>
+                            <div class="module-index">Sekcja 02</div>
+                            <h2>Jak oszczędzać</h2>
+                        </div>
+                        <span class="eyebrow">Budżet osobisty</span>
+                    </div>
+
+                    <div class="module-grid">
+                        <div class="module-media">
+                            <div class="image-box">
+                                <img src="image4.png" alt="Schemat budżetu osobistego z podziałem wydatków" />
+                                <div class="image-caption">Oszczędzanie zaczyna się od porządku w przepływie pieniędzy.</div>
+                            </div>
+                            <div class="audio-box">
+                                <h4>Materiał audio</h4>
+                                <audio controls preload="none">
+                                    <source src="Jak oszczędzać.mp3" type="audio/mpeg" />
+                                    Twoja przeglądarka nie wspiera odtwarzacza audio.
+                                </audio>
+                            </div>
+                            <div class="iframe-box">
+                                <h4>Ćwiczenie interaktywne: budżet osobisty</h4>
+                                <iframe style="max-width:100%" src="https://wordwall.net/embed/f5c8ce7916ab4a4491a00a2ef2341aec?themeId=1&templateId=2&fontStackId=0" width="500" height="380" frameborder="0" allowfullscreen title="Budżet osobisty - Wordwall"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="module-copy">
+                            <p>
+                                Oszczędzanie nie polega wyłącznie na odkładaniu tego, co zostanie pod koniec miesiąca. Skuteczniejszy model działa odwrotnie: najpierw planujesz budżet, a dopiero potem wydajesz pieniądze zgodnie z ustalonymi kategoriami. Dzięki temu oszczędności stają się świadomą decyzją, a nie przypadkiem.
+                            </p>
+                            <p>
+                                Dobrze zbudowany budżet osobisty pokazuje, ile środków pochłaniają koszty stałe, ile przeznaczasz na codzienne potrzeby, a ile możesz skierować na poduszkę finansową i cele przyszłościowe. To szczególnie ważne dla młodych osób, które uczą się zarządzania pieniędzmi i chcą unikać życia od wypłaty do wypłaty.
+                            </p>
+                            <div class="grid-notes">
+                                <div class="note">
+                                    <strong>Pierwszy krok</strong>
+                                    Spisz wszystkie regularne wpływy i wydatki, nawet te pozornie drobne.
+                                </div>
+                                <div class="note">
+                                    <strong>Dobra praktyka</strong>
+                                    Ustal stały procent dochodu, który odkładasz od razu po otrzymaniu pieniędzy.
+                                </div>
+                            </div>
+                            <ul>
+                                <li>Budżet daje kontrolę nad codziennymi decyzjami finansowymi.</li>
+                                <li>Oszczędzanie buduje bezpieczeństwo i zmniejsza presję finansową.</li>
+                                <li>Systematyczność jest ważniejsza niż jednorazowe duże kwoty.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="podatki" class="module">
+            <div class="container">
+                <article class="module-card">
+                    <div class="module-top">
+                        <div>
+                            <div class="module-index">Sekcja 03</div>
+                            <h2>Jak działają podatki</h2>
+                        </div>
+                        <span class="eyebrow">Państwo i finanse publiczne</span>
+                    </div>
+
+                    <div class="module-grid">
+                        <div class="module-media">
+                            <div class="image-box">
+                                <img src="image5.png" alt="Wizualizacja źródeł dochodów publicznych i podatków" />
+                                <div class="image-caption">Podatki finansują wspólne usługi, ale wpływają też na decyzje obywateli i firm.</div>
+                            </div>
+                            <div class="audio-box">
+                                <h4>Materiał audio</h4>
+                                <audio controls preload="none">
+                                    <source src="Jak działają podatki.mp3" type="audio/mpeg" />
+                                    Twoja przeglądarka nie wspiera odtwarzacza audio.
+                                </audio>
+                            </div>
+                            <div class="iframe-box">
+                                <h4>Ćwiczenie interaktywne: jak działają podatki</h4>
+                                <iframe style="max-width:100%" src="https://wordwall.net/embed/594bcae3a1d846b888f6e2d95595e6e0?themeId=1&templateId=5&fontStackId=0" width="500" height="380" frameborder="0" allowfullscreen title="Jak działają podatki - Wordwall"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="module-copy">
+                            <p>
+                                Podatki są jednym z podstawowych mechanizmów finansowania państwa. Dzięki nim możliwe jest utrzymanie szkół, dróg, ochrony zdrowia, bezpieczeństwa publicznego czy różnych form wsparcia społecznego. Z perspektywy obywatela i przedsiębiorcy oznacza to, że część wypracowanych pieniędzy trafia do wspólnego systemu.
+                            </p>
+                            <p>
+                                Zrozumienie podatków pomaga podejmować bardziej świadome decyzje ekonomiczne. Młody człowiek, który rozumie różnicę między dochodem brutto a netto albo wie, że firmy funkcjonują w określonym otoczeniu fiskalnym, lepiej odnajduje się w realnym świecie pracy i biznesu. Wiedza o podatkach nie musi być specjalistyczna, ale powinna być praktyczna.
+                            </p>
+                            <div class="grid-notes">
+                                <div class="note">
+                                    <strong>Co warto rozumieć</strong>
+                                    Skąd biorą się dochody publiczne i dlaczego podatki wpływają na codzienne życie.
+                                </div>
+                                <div class="note">
+                                    <strong>Znaczenie dla biznesu</strong>
+                                    Podatki są jednym z kosztów i czynników planowania działalności gospodarczej.
+                                </div>
+                            </div>
+                            <ul>
+                                <li>Podatki służą finansowaniu zadań publicznych.</li>
+                                <li>Wpływają na budżet domowy, ceny i działalność firm.</li>
+                                <li>Świadomość podatkowa ułatwia odpowiedzialne decyzje finansowe.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="projekty" class="module">
+            <div class="container">
+                <article class="module-card">
+                    <div class="module-top">
+                        <div>
+                            <div class="module-index">Sekcja 04</div>
+                            <h2>Jak zarządzać projektami</h2>
+                        </div>
+                        <span class="eyebrow">Planowanie i realizacja</span>
+                    </div>
+
+                    <div class="module-grid">
+                        <div class="module-media">
+                            <div class="image-box">
+                                <img src="image3.png" alt="Grafika SMART wspierająca planowanie projektu" />
+                                <div class="image-caption">Dobry projekt potrzebuje celu, miernika i terminu.</div>
+                            </div>
+                            <div class="audio-box">
+                                <h4>Materiał audio</h4>
+                                <audio controls preload="none">
+                                    <source src="Jak zarządzać projektami.mp3" type="audio/mpeg" />
+                                    Twoja przeglądarka nie wspiera odtwarzacza audio.
+                                </audio>
+                            </div>
+                        </div>
+
+                        <div class="module-copy">
+                            <p>
+                                Zarządzanie projektami polega na doprowadzaniu pomysłu do konkretnego rezultatu. Nieważne, czy chodzi o szkolny projekt, małą inicjatywę społeczną czy pierwsze działania biznesowe — zawsze potrzebne są: jasno określony cel, plan kroków, podział zadań i kontrola postępów.
+                            </p>
+                            <p>
+                                Właśnie dlatego w tej sekcji pojawia się metoda SMART. Pomaga ona przełożyć ogólną motywację na zadanie, które da się wykonać i ocenić. Kiedy cel jest konkretny, mierzalny, osiągalny, istotny i osadzony w czasie, łatwiej zarządzać energią, terminami i odpowiedzialnością za wynik.
+                            </p>
+                            <div class="grid-notes">
+                                <div class="note">
+                                    <strong>Skuteczny projekt</strong>
+                                    Ma jasno określony rezultat, harmonogram i kryterium sprawdzenia efektu.
+                                </div>
+                                <div class="note">
+                                    <strong>Najczęstszy błąd</strong>
+                                    Zbyt ogólny cel, przez który nie wiadomo, od czego zacząć ani jak ocenić postęp.
+                                </div>
+                            </div>
+                            <ul>
+                                <li>Projekt trzeba rozpisać na etapy i priorytety.</li>
+                                <li>Regularne sprawdzanie postępu ogranicza chaos.</li>
+                                <li>Dobra organizacja zwiększa szansę na dowiezienie wyniku.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="pieniadz" class="module">
+            <div class="container">
+                <article class="module-card">
+                    <div class="module-top">
+                        <div>
+                            <div class="module-index">Sekcja 05</div>
+                            <h2>Czym jest pieniądz</h2>
+                        </div>
+                        <span class="eyebrow">Podstawy ekonomii</span>
+                    </div>
+
+                    <div class="module-grid">
+                        <div class="module-media">
+                            <div class="image-box">
+                                <img src="image2.jpg" alt="Symboliczna scena sukcesu i wartości ekonomicznej" />
+                                <div class="image-caption">Pieniądz nie jest celem samym w sobie — jest narzędziem wymiany i budowania wartości.</div>
+                            </div>
+                            <div class="audio-box">
+                                <h4>Materiał audio</h4>
+                                <audio controls preload="none">
+                                    <source src="Czym jest pieniądz.mp3" type="audio/mpeg" />
+                                    Twoja przeglądarka nie wspiera odtwarzacza audio.
+                                </audio>
+                            </div>
+                            <div class="iframe-box">
+                                <h4>Ćwiczenie interaktywne: czym jest pieniądz</h4>
+                                <iframe style="max-width:100%" src="https://wordwall.net/embed/85eb8b5b9b634cc8bced3860fdd488ac?themeId=1&templateId=8&fontStackId=0" width="500" height="380" frameborder="0" allowfullscreen title="Czym jest pieniądz - Wordwall"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="module-copy">
+                            <p>
+                                Pieniądz to umówione społecznie narzędzie, które ułatwia wymianę dóbr i usług. Zamiast rozliczać się barterem, ludzie korzystają z uniwersalnego środka, który pozwala porównywać wartość różnych rzeczy, przechowywać siłę nabywczą i odraczać płatności w czasie.
+                            </p>
+                            <p>
+                                Zrozumienie istoty pieniądza ma duże znaczenie dla młodych osób uczących się ekonomii i przedsiębiorczości. Dzięki temu łatwiej pojąć, skąd bierze się cena, dlaczego pracujemy za wynagrodzenie, po co oszczędzamy i czemu warto myśleć o pieniądzu nie emocjonalnie, lecz funkcjonalnie. Pieniądz nie rozwiązuje wszystkich problemów, ale jest kluczowym narzędziem organizacji życia gospodarczego.
+                            </p>
+                            <div class="grid-notes">
+                                <div class="note">
+                                    <strong>Trzy funkcje pieniądza</strong>
+                                    Środek wymiany, miernik wartości i sposób przechowywania części majątku.
+                                </div>
+                                <div class="note">
+                                    <strong>Wniosek praktyczny</strong>
+                                    Kto rozumie rolę pieniądza, ten lepiej zarządza pracą, ceną i oszczędnościami.
+                                </div>
+                            </div>
+                            <ul>
+                                <li>Pieniądz porządkuje wymianę w gospodarce.</li>
+                                <li>Pozwala wyrażać wartość towarów i usług we wspólnej jednostce.</li>
+                                <li>Jego rozumienie jest podstawą świadomej edukacji finansowej.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
             </div>
         </section>
 
         <section>
             <div class="container">
-                <div class="quote">
-                    <strong>Wniosek z repo</strong>
-                    <h2>Najlepsza strona nie tylko dobrze wygląda — ona prowadzi użytkownika od inspiracji do decyzji.</h2>
+                <div class="summary-box">
+                    <span class="eyebrow">Projekt konkursowy</span>
+                    <h2>Młody Biznesmen to projekt edukacyjny przygotowany na konkurs Narodowego Banku Polskiego.</h2>
                     <p>
-                        Dlatego ten projekt łączy dynamiczny hero section, edukacyjne bloki treści i wizualne odniesienia
-                        do finansów. Dzięki temu zawartość jest spójna z obrazami, które już znajdowały się w repozytorium.
+                        Strona łączy materiały audio, grafiki i ćwiczenia interaktywne, aby w przystępny sposób wyjaśniać podstawy przedsiębiorczości, finansów i ekonomii.
                     </p>
+                    <div style="margin-top: 1.5rem; display: flex; justify-content: center;">
+                        <a class="button secondary" href="#start">Wróć na górę</a>
+                    </div>
                 </div>
             </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-box">
-                <div>
-                    <strong>Młody Biznesmen</strong>
-                    <p>Jedna strona, zbudowana bezpośrednio na podstawie obrazów dostępnych w repo.</p>
-                </div>
-                <a class="button secondary" href="#start">Wróć na górę</a>
-            </div>
-        </div>
-    </footer>
+        </s
 </body>
 </html>
