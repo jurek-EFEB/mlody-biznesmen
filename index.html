@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Młody Biznesmen | Platforma edukacyjna o przedsiębiorczości i finansach</title>
+    <title>Młody Biznesmen | Przedsiębiorczość i finanse</title>
     <meta name="description" content="Platforma edukacyjna o przedsiębiorczości, oszczędzaniu, podatkach, zarządzaniu projektami i roli pieniądza. Każda sekcja zawiera treść, grafikę, audio i interaktywne ćwiczenia." />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -116,6 +116,24 @@
             color: var(--text);
         }
 
+        .menu-toggle {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: rgba(255,255,255,0.04);
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .menu-toggle svg {
+            width: 22px;
+            height: 22px;
+        }
+
         .hero {
             padding: 4.2rem 0 3rem;
         }
@@ -147,9 +165,11 @@
 
         h1 {
             margin: 1rem 0 1.2rem;
-            font-size: clamp(2.6rem, 5vw, 5.2rem);
-            line-height: 0.96;
-            letter-spacing: -0.05em;
+            font-size: clamp(2.4rem, 4.2vw, 4.6rem);
+            line-height: 1.02;
+            letter-spacing: -0.045em;
+            max-width: 10ch;
+            text-wrap: balance;
         }
 
         h2 {
@@ -255,6 +275,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        .image-box img.contain-image {
+            object-fit: contain;
+            background: rgba(255,255,255,0.96);
+            padding: 0.5rem;
         }
 
         .image-caption {
@@ -455,17 +481,62 @@
             .hero {
                 padding-top: 3rem;
             }
+
+            .topbar-inner {
+                align-items: stretch;
+            }
+
+            .topbar-head {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1rem;
+                width: 100%;
+            }
+
+            .menu-toggle {
+                display: inline-flex;
+            }
+
+            .nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 0.35rem;
+                padding-top: 0.5rem;
+            }
+
+            .nav.is-open {
+                display: flex;
+            }
+
+            .nav a {
+                width: 100%;
+                padding: 0.9rem 1rem;
+                border-radius: 16px;
+                background: rgba(255,255,255,0.04);
+                border: 1px solid rgba(255,255,255,0.05);
+            }
         }
     </style>
 </head>
 <body>
     <header class="topbar">
         <div class="container topbar-inner">
-            <a class="brand" href="#start">
-                <img src="apple-touch-icon.png" alt="Ikona platformy Młody Biznesmen" />
-                <span>Młody Biznesmen</span>
-            </a>
-            <nav class="nav" aria-label="Główna nawigacja">
+            <div class="topbar-head">
+                <a class="brand" href="#start">
+                    <img src="apple-touch-icon.png" alt="Ikona platformy Młody Biznesmen" />
+                    <span>Młody Biznesmen</span>
+                </a>
+                <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Otwórz menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <path d="M4 7h16"></path>
+                        <path d="M4 12h16"></path>
+                        <path d="M4 17h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <nav class="nav" id="mobile-nav" aria-label="Główna nawigacja">
                 <a href="#o-platformie">O platformie</a>
                 <a href="#przedsiebiorca">Przedsiębiorca</a>
                 <a href="#oszczedzanie">Oszczędzanie</a>
@@ -481,7 +552,7 @@
             <div class="container hero-grid">
                 <div>
                     <span class="eyebrow">Platforma edukacyjna</span>
-                    <h1>Przedsiębiorczość, finanse i zarządzanie w wyraźnie podzielonych sekcjach.</h1>
+                    <h1>Przedsiębiorczość i finanse dla młodych.</h1>
                     <p class="lead">
                         Strona zawiera materiały edukacyjne o przedsiębiorczości, finansach i ekonomii. Znajdziesz tu krótkie wyjaśnienia pojęć, nagrania audio oraz ćwiczenia, które pomagają lepiej zrozumieć budżet, podatki, pieniądz i planowanie działań.
                     </p>
@@ -548,10 +619,16 @@
 
                         <div class="module-copy">
                             <p>
-                                Przedsiębiorca to nie tylko osoba, która zakłada firmę. To ktoś, kto potrafi dostrzec problem, zaproponować rozwiązanie i wziąć odpowiedzialność za jego wdrożenie. Taka postawa wymaga samodzielności, odwagi oraz umiejętności podejmowania decyzji mimo niepewności.
+                                Przedsiębiorca to osoba, która potrafi zamieniać pomysły w działanie. Nie chodzi wyłącznie o prowadzenie firmy, lecz o sposób myślenia oparty na inicjatywie, odpowiedzialności i gotowości do szukania rozwiązań. Taka osoba nie czeka biernie na zmianę sytuacji, ale stara się wpływać na rzeczywistość, obserwować potrzeby innych ludzi i odpowiadać na nie konkretnym działaniem.
                             </p>
                             <p>
-                                W praktyce przedsiębiorczość zaczyna się dużo wcześniej niż rejestracja działalności. Widać ją wtedy, gdy ktoś planuje swoje działania, szuka okazji, analizuje ryzyko i uczy się na błędach. To sposób myślenia oparty na sprawczości: zamiast biernie czekać, przedsiębiorca tworzy wartość dla innych i jednocześnie rozwija własne kompetencje.
+                                Przedsiębiorczość zaczyna się często od małych decyzji: zorganizowania pracy, znalezienia lepszego sposobu wykonania zadania, zaplanowania wydatków albo dostrzeżenia okazji, której inni wcześniej nie zauważyli. Dlatego postawa przedsiębiorcza przydaje się nie tylko właścicielom firm, ale także uczniom, studentom i pracownikom. To kompetencja życiowa, która uczy samodzielności, konsekwencji i myślenia o skutkach własnych wyborów.
+                            </p>
+                            <p>
+                                Ważnym elementem przedsiębiorczości jest również gotowość do podejmowania ryzyka, ale nie ryzyka przypadkowego. Dobry przedsiębiorca potrafi ocenić sytuację, przewidzieć możliwe trudności i przygotować się na różne scenariusze. Nie chodzi więc o brawurę, tylko o umiejętne łączenie odwagi z rozsądkiem. To właśnie dlatego przedsiębiorczość tak często łączy się z planowaniem, analizą i wytrwałością.
+                            </p>
+                            <p>
+                                W praktyce przedsiębiorca buduje wartość. Może to być produkt, usługa, projekt społeczny albo nowe usprawnienie w codziennym działaniu. Najważniejsze jest to, że jego praca odpowiada na realną potrzebę. Dzięki temu przedsiębiorczość nie sprowadza się do hasła o zarabianiu pieniędzy, ale oznacza tworzenie czegoś użytecznego i odpowiedzialnego.
                             </p>
                             <div class="grid-notes">
                                 <div class="note">
@@ -606,10 +683,16 @@
 
                         <div class="module-copy">
                             <p>
-                                Oszczędzanie nie polega wyłącznie na odkładaniu tego, co zostanie pod koniec miesiąca. Skuteczniejszy model działa odwrotnie: najpierw planujesz budżet, a dopiero potem wydajesz pieniądze zgodnie z ustalonymi kategoriami. Dzięki temu oszczędności stają się świadomą decyzją, a nie przypadkiem.
+                                Oszczędzanie to jedna z podstawowych umiejętności finansowych. Nie polega ono jedynie na rezygnowaniu z wydatków, ale przede wszystkim na świadomym planowaniu pieniędzy. Osoba, która oszczędza, wie, ile zarabia, na co wydaje środki i jaki cel chce dzięki temu osiągnąć. Może to być poduszka bezpieczeństwa, zakup potrzebnej rzeczy, wyjazd, edukacja albo przygotowanie się na nieprzewidziane sytuacje.
                             </p>
                             <p>
-                                Dobrze zbudowany budżet osobisty pokazuje, ile środków pochłaniają koszty stałe, ile przeznaczasz na codzienne potrzeby, a ile możesz skierować na poduszkę finansową i cele przyszłościowe. To szczególnie ważne dla młodych osób, które uczą się zarządzania pieniędzmi i chcą unikać życia od wypłaty do wypłaty.
+                                Największym błędem jest traktowanie oszczędności jako tego, co zostaje na końcu miesiąca. Znacznie skuteczniejsze jest zaplanowanie oszczędzania na samym początku, tak aby odkładanie pieniędzy było stałym elementem budżetu. Nawet niewielkie kwoty, odkładane regularnie, dają lepszy efekt niż sporadyczne duże wpłaty. Właśnie regularność buduje dobre nawyki finansowe.
+                            </p>
+                            <p>
+                                Pomaga w tym budżet osobisty, czyli prosty plan pokazujący, jak dzielimy nasze pieniądze. Dzięki budżetowi łatwiej zauważyć, które wydatki są konieczne, a które wynikają bardziej z przyzwyczajenia niż z realnej potrzeby. To ważne zwłaszcza wtedy, gdy ktoś dopiero uczy się zarządzania własnymi finansami i chce uniknąć chaosu w codziennych decyzjach.
+                            </p>
+                            <p>
+                                Oszczędzanie daje także poczucie bezpieczeństwa. Kiedy mamy odłożone środki, łatwiej poradzić sobie z nagłymi kosztami, takimi jak naprawa sprzętu, wydatek zdrowotny albo chwilowy spadek dochodów. W tym sensie oszczędności nie są ograniczeniem, lecz formą wolności. Dają większy spokój i pozwalają podejmować rozsądniejsze decyzje.
                             </p>
                             <div class="grid-notes">
                                 <div class="note">
@@ -664,10 +747,16 @@
 
                         <div class="module-copy">
                             <p>
-                                Podatki są jednym z podstawowych mechanizmów finansowania państwa. Dzięki nim możliwe jest utrzymanie szkół, dróg, ochrony zdrowia, bezpieczeństwa publicznego czy różnych form wsparcia społecznego. Z perspektywy obywatela i przedsiębiorcy oznacza to, że część wypracowanych pieniędzy trafia do wspólnego systemu.
+                                Podatki to obowiązkowe świadczenia, które obywatele i firmy przekazują państwu. Dzięki nim możliwe jest finansowanie usług i instytucji publicznych, z których korzystamy każdego dnia. Szkoły, drogi, transport publiczny, policja, szpitale czy administracja nie funkcjonują bez pieniędzy pochodzących właśnie z podatków i innych dochodów publicznych.
                             </p>
                             <p>
-                                Zrozumienie podatków pomaga podejmować bardziej świadome decyzje ekonomiczne. Młody człowiek, który rozumie różnicę między dochodem brutto a netto albo wie, że firmy funkcjonują w określonym otoczeniu fiskalnym, lepiej odnajduje się w realnym świecie pracy i biznesu. Wiedza o podatkach nie musi być specjalistyczna, ale powinna być praktyczna.
+                                Dla wielu osób podatki wydają się trudnym i odległym tematem, ale w rzeczywistości mają bardzo duży wpływ na codzienne życie. Wpływają na wysokość wynagrodzenia, cenę produktów i usług, koszty prowadzenia działalności gospodarczej oraz możliwości finansowe państwa. Zrozumienie, że część pieniędzy trafia do wspólnego systemu, pomaga lepiej pojąć zasady funkcjonowania gospodarki.
+                            </p>
+                            <p>
+                                Warto też wiedzieć, że podatki pełnią nie tylko funkcję fiskalną, czyli dostarczają państwu dochodów. Mogą także wpływać na zachowania ludzi i firm. Przykładowo niektóre podatki lub ulgi zachęcają do określonych działań, a inne mają ograniczać zjawiska uznawane za niekorzystne. W tym sensie podatki są również narzędziem polityki gospodarczej i społecznej.
+                            </p>
+                            <p>
+                                Dla młodego człowieka podstawowa wiedza podatkowa jest przydatna już na początku dorosłego życia. Pomaga zrozumieć różnicę między kwotą brutto a netto, sens dokumentów finansowych oraz to, że działalność zarobkowa wiąże się nie tylko z przychodem, ale także z obowiązkami. Taka świadomość sprzyja odpowiedzialnemu myśleniu o pracy, firmie i finansach.
                             </p>
                             <div class="grid-notes">
                                 <div class="note">
@@ -704,7 +793,7 @@
                     <div class="module-grid">
                         <div class="module-media">
                             <div class="image-box">
-                                <img src="image3.png" alt="Grafika SMART wspierająca planowanie projektu" />
+                                <img class="contain-image" src="image3.png" alt="Grafika SMART wspierająca planowanie projektu" />
                                 <div class="image-caption">Dobry projekt potrzebuje celu, miernika i terminu.</div>
                             </div>
                             <div class="audio-box">
@@ -718,10 +807,16 @@
 
                         <div class="module-copy">
                             <p>
-                                Zarządzanie projektami polega na doprowadzaniu pomysłu do konkretnego rezultatu. Nieważne, czy chodzi o szkolny projekt, małą inicjatywę społeczną czy pierwsze działania biznesowe — zawsze potrzebne są: jasno określony cel, plan kroków, podział zadań i kontrola postępów.
+                                Zarządzanie projektami to umiejętność planowania i prowadzenia działań w taki sposób, aby doprowadziły do konkretnego rezultatu. Projekt może mieć różną skalę: od przygotowania wydarzenia szkolnego, przez realizację pracy zespołowej, aż po stworzenie produktu lub usługi. Niezależnie od wielkości, każdy projekt wymaga celu, planu i kontroli postępów.
                             </p>
                             <p>
-                                Właśnie dlatego w tej sekcji pojawia się metoda SMART. Pomaga ona przełożyć ogólną motywację na zadanie, które da się wykonać i ocenić. Kiedy cel jest konkretny, mierzalny, osiągalny, istotny i osadzony w czasie, łatwiej zarządzać energią, terminami i odpowiedzialnością za wynik.
+                                Jednym z najczęstszych problemów jest rozpoczynanie działania bez jasnego określenia, co właściwie ma zostać osiągnięte. Wtedy łatwo o chaos, gubienie terminów i rozproszenie energii. Dlatego tak ważne jest rozpisanie projektu na etapy, określenie kolejności zadań i przypisanie odpowiedzialności. Dobrze zaplanowany projekt pozwala skupić się na tym, co naprawdę prowadzi do wyniku.
+                            </p>
+                            <p>
+                                Pomocna jest tu metoda SMART, która pozwala doprecyzować cel. Jeśli cel jest konkretny, mierzalny, osiągalny, istotny i określony w czasie, łatwiej nie tylko rozpocząć pracę, ale też sprawdzać, czy wszystko idzie zgodnie z planem. Taki sposób myślenia porządkuje działanie i ogranicza ryzyko odkładania zadań na później.
+                            </p>
+                            <p>
+                                Zarządzanie projektem to także reagowanie na zmiany. W praktyce nie wszystko przebiega idealnie: pojawiają się opóźnienia, nowe obowiązki lub nieprzewidziane trudności. Dlatego ważna jest elastyczność, ale bez utraty głównego celu. Osoba, która potrafi prowadzić projekt, nie tylko realizuje zadania, lecz również monitoruje sytuację i dostosowuje działania tak, aby osiągnąć zaplanowany rezultat.
                             </p>
                             <div class="grid-notes">
                                 <div class="note">
@@ -776,10 +871,16 @@
 
                         <div class="module-copy">
                             <p>
-                                Pieniądz to umówione społecznie narzędzie, które ułatwia wymianę dóbr i usług. Zamiast rozliczać się barterem, ludzie korzystają z uniwersalnego środka, który pozwala porównywać wartość różnych rzeczy, przechowywać siłę nabywczą i odraczać płatności w czasie.
+                                Pieniądz to jedno z najważniejszych narzędzi w gospodarce. Ułatwia wymianę dóbr i usług, ponieważ pozwala uniknąć systemu barterowego, w którym każda transakcja wymagałaby bezpośredniego dopasowania potrzeb dwóch stron. Dzięki pieniądzowi można sprzedać swoją pracę, produkt albo usługę, a następnie wykorzystać uzyskane środki na zakup tego, co jest potrzebne w innym miejscu i czasie.
                             </p>
                             <p>
-                                Zrozumienie istoty pieniądza ma duże znaczenie dla młodych osób uczących się ekonomii i przedsiębiorczości. Dzięki temu łatwiej pojąć, skąd bierze się cena, dlaczego pracujemy za wynagrodzenie, po co oszczędzamy i czemu warto myśleć o pieniądzu nie emocjonalnie, lecz funkcjonalnie. Pieniądz nie rozwiązuje wszystkich problemów, ale jest kluczowym narzędziem organizacji życia gospodarczego.
+                                Pieniądz pełni kilka podstawowych funkcji. Jest środkiem wymiany, bo umożliwia dokonywanie transakcji. Jest miernikiem wartości, ponieważ pozwala porównywać ceny różnych produktów i usług. Jest też sposobem przechowywania części majątku, ponieważ odłożone środki można wykorzystać później. Zrozumienie tych funkcji pomaga lepiej pojąć, dlaczego pieniądz odgrywa tak dużą rolę w codziennym życiu.
+                            </p>
+                            <p>
+                                Ważne jest również to, że pieniądz sam w sobie nie tworzy wartości. Wartość powstaje dzięki pracy, produkcji, wiedzy, organizacji i wymianie. Pieniądz jest narzędziem, które tę wartość wyraża i przenosi. Taki sposób patrzenia pomaga uniknąć myślenia o finansach wyłącznie emocjonalnie. Zamiast traktować pieniądz jako cel sam w sobie, łatwiej zrozumieć go jako element większego systemu gospodarczego.
+                            </p>
+                            <p>
+                                Dla młodych osób wiedza o pieniądzu jest szczególnie cenna, ponieważ stanowi podstawę dalszej edukacji finansowej. Bez niej trudno dobrze rozumieć oszczędzanie, ceny, wynagrodzenie, podatki czy budżet. Kto rozumie, czym jest pieniądz i jakie ma funkcje, ten łatwiej podejmuje rozsądne decyzje ekonomiczne w życiu prywatnym i zawodowym.
                             </p>
                             <div class="grid-notes">
                                 <div class="note">
@@ -815,6 +916,25 @@
                     </div>
                 </div>
             </div>
-        </s
+        </section>
+    </main>
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileNav = document.querySelector('.nav');
+
+        if (menuToggle && mobileNav) {
+            menuToggle.addEventListener('click', () => {
+                const isOpen = mobileNav.classList.toggle('is-open');
+                menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+
+            mobileNav.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('is-open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+    </script>
 </body>
 </html>
